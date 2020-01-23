@@ -5,7 +5,7 @@
     >
         <v-card>
             <v-card-title>
-                不当行为
+                课程
                 <v-spacer/>
                 <v-text-field
                         v-model="search"
@@ -17,7 +17,7 @@
             </v-card-title>
             <v-data-table
                     :headers="header"
-                    :items="behaviors"
+                    :items="courses"
                     :search="search"
             />
         </v-card>
@@ -25,34 +25,31 @@
 </template>
 
 <script>
-    import MisbehaviorApiClient from "@/client/MisbehaviorApiClient";
+    import CourseApiClient from "@/client/CourseApiClient";
 
     export default {
-        name: "MisbehaviorTable",
+        name: "CourseTable",
         props:{
-            subjectId:Number,
-            dataSourse:Function
+            subjectId:Number
         },
         data:()=>({
             header:[
-                {
-                    text: '行为类型',
-                    align: 'left',
-                    value: 'type',
-                },
-                { text: '课程', value: 'course.name' },
-                { text: '时间', value: 'when' },
+                { text: '课程', value: 'course.name',align: 'left' },
+                { text: '星期', value: 'course.day' },
+                { text: '时间', value: 'course.time' },
+                { text: '教师', value: 'course.teacher.name' },
+                { text: '教室', value: 'course.classroom.identifier' },
             ],
             search:"",
-            behaviors:[],
+            courses:[],
         }),
         mounted:function () {
             let model = this;
-            MisbehaviorApiClient
-                .getMisbehavior(this.$cookies.get("apiKey")
-                    ,this.subjectId).then(function (response) {
-                        model.behaviors=response.data;
-                })
+            CourseApiClient.getAttendance(this.$cookies.get("apiKey")).then(function (
+                response
+            ) {
+                model.courses = response.data;
+            })
         }
     }
 </script>

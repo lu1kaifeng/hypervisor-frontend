@@ -43,6 +43,7 @@
 <script>
     import Dash from "@/components/Dash";
     import SubjectApiClient from "@/client/SubjectApiClient";
+    import CourseSelection from "@/components/CourseSelection";
 
     export default {
         name:"NavBar",
@@ -51,6 +52,7 @@
                 drawer: true,
                 items: [
                     { title: '仪表板', icon: 'mdi-view-dashboard',component:Dash },
+                    { title: '加入课程', icon: 'mdi-select-all',component:CourseSelection },
                 ],
                 mini: true,
                 avatar:"",
