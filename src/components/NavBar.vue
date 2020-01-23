@@ -6,10 +6,10 @@
         >
             <v-list-item class="px-2">
                 <v-list-item-avatar>
-                    <v-img src="https://randomuser.me/api/portraits/men/85.jpg"/>
+                    <v-img v-bind:src="'data:image/jpg;base64,' + avatar" />
                 </v-list-item-avatar>
 
-                <v-list-item-title>John Leider</v-list-item-title>
+                <v-list-item-title>{{'你好,'+ subject.name}}</v-list-item-title>
 
                 <v-btn
                         icon
@@ -25,6 +25,7 @@
                 <v-list-item
                         v-for="item in items"
                         :key="item.title"
+                        v-on:click="$emit('pageChanged',item.component)"
                         link
                 >
                     <v-list-item-icon>
@@ -40,19 +41,32 @@
 </template>
 
 <script>
+    import Dash from "@/components/Dash";
+    import SubjectApiClient from "@/client/SubjectApiClient";
+
     export default {
         name:"NavBar",
         data () {
             return {
                 drawer: true,
                 items: [
-                    { title: 'Home', icon: 'mdi-home-city' },
-                    { title: 'My Account', icon: 'mdi-account' },
-                    { title: 'Users', icon: 'mdi-account-group-outline' },
+                    { title: '仪表板', icon: 'mdi-view-dashboard',component:Dash },
                 ],
                 mini: true,
+                avatar:"",
+                subject:null
             }
         },
+        mounted() {
+            let model = this;
+            this.$emit('pageChanged',this.items[0].component);
+            SubjectApiClient.getSubjectPhoto(this.$cookies.get("apiKey")).then(response=>{
+                model.avatar = response.data.photoBase64;
+            })
+            SubjectApiClient.getSubjectObj(this.$cookies.get("apiKey")).then(response=>{
+                model.subject = response.data;
+            })
+        }
     }
 </script>
 
