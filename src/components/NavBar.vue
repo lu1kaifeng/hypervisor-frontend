@@ -21,9 +21,9 @@
 
             <v-divider/>
 
-            <v-list dense>
+            <v-list dense v-if="subject.role === 'god' || subject.role === 'teacher'">
                 <v-list-item
-                        v-for="item in items"
+                        v-for="item in teacherItems"
                         :key="item.title"
                         v-on:click="$emit('pageChanged',item.component)"
                         link
@@ -37,6 +37,38 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
+
+            <v-list dense v-else>
+                <v-list-item
+                        v-for="item in studentItems"
+                        :key="item.title"
+                        v-on:click="$emit('pageChanged',item.component)"
+                        link
+                >
+                    <v-list-item-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+
+            <template v-slot:append>
+                <v-divider/>
+                <v-list dense>
+                    <v-list-item v-on:click="onLogout" link>
+                    <v-list-item-icon>
+                        <v-icon>mdi-logout</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>注销</v-list-item-title>
+                    </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+            </template>
         </v-navigation-drawer>
 </template>
 
@@ -44,15 +76,19 @@
     import Dash from "@/components/Dash";
     import SubjectApiClient from "@/client/SubjectApiClient";
     import CourseSelection from "@/components/CourseSelection";
+    import Control from "@/components/Control";
 
     export default {
         name:"NavBar",
         data () {
             return {
                 drawer: true,
-                items: [
+                studentItems: [
                     { title: '仪表板', icon: 'mdi-view-dashboard',component:Dash },
                     { title: '加入课程', icon: 'mdi-select-all',component:CourseSelection },
+                ],
+                teacherItems:[
+                    { title: '控制台', icon: 'mdi-tune',component:Control },
                 ],
                 mini: true,
                 avatar:"",
@@ -61,13 +97,20 @@
         },
         mounted() {
             let model = this;
-            this.$emit('pageChanged',this.items[0].component);
             SubjectApiClient.getSubjectPhoto(this.$cookies.get("apiKey")).then(response=>{
                 model.avatar = response.data.photoBase64;
             })
             SubjectApiClient.getSubjectObj(this.$cookies.get("apiKey")).then(response=>{
                 model.subject = response.data;
+                if(model.subject.role === 'god' || model.subject.role === 'teacher') model.$emit('pageChanged',this.teacherItems[0].component)
+                    else model.$emit('pageChanged',this.studentItems[0].component);
             })
+        },
+        methods:{
+            onLogout:function () {
+                this.$cookies.remove("apiKey");
+                window.location.reload();
+            }
         }
     }
 </script>

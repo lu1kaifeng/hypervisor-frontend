@@ -16,4 +16,12 @@ export default  class SubjectApiClient {
             }
         })
     }
+
+    static getAllSubject(token){
+        return Axios.get('/subject/all',{
+            headers:{
+                "x-api-key":token
+            }
+        })
+    }
 }

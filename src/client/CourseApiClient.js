@@ -25,4 +25,21 @@ export default class CourseApiClient{
             }
         })
     }
+
+    static newCourse(token,name,teacherId,classroom,weekday,timeHr,timeMin,durationHr){
+        return Axios.post('/course',null,{
+            headers:{
+                "x-api-key":token
+            },
+            params:{
+                "name":name,
+                "teacherId":teacherId,
+                "classroom":classroom,
+                "weekday":weekday,
+                "timeHr":timeHr,
+                "timeMin":timeMin,
+                "durationHr":durationHr
+            }
+        })
+    }
 }

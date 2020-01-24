@@ -51,6 +51,8 @@
 </template>
 
 <script>
+    import Misc from "@/client/Misc";
+
     export default {
         name: "greet",
         props:{
@@ -62,8 +64,7 @@
         }),
         computed:{
             engagementVal:function () {
-                if((this.SubjectObj.numEngagement === 0) && (this.SubjectObj.numDisengagement === 0 )) return 1.0;
-                return this.SubjectObj.numEngagement / (this.SubjectObj.numEngagement+this.SubjectObj.numDisengagement)
+                return Misc.engagementVal(this.SubjectObj)
             }
         }
     }

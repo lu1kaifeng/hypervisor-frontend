@@ -40,6 +40,8 @@ export default {
             return this.$cookies.isKey("apiKey");
         }
     },
+    watchers:{
+    },
     methods:{
       onLogin:function (userName,password) {
           let model = this;
@@ -52,6 +54,7 @@ export default {
             }).then(function (response) {
                 model.wrongUserNamePassword = false;
                 model.$cookies.set("apiKey",response.data);
+                window.location.reload()
                 // eslint-disable-next-line no-unused-vars
             }).catch(function (error) {
                 model.wrongUserNamePassword = true;
