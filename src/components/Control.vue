@@ -3,6 +3,11 @@
         <v-row style="height: 100%">
             <v-col cols="6">
                 <BarChart :subjects="subjects"/>
+                <v-row>
+                    <v-col cols="12">
+                        <ClassroomManagement/>
+                    </v-col>
+                </v-row>
             </v-col>
             <v-col cols="6">
                 <CourseManagement/>
@@ -16,9 +21,10 @@
     import SubjectApiClient from "@/client/SubjectApiClient";
     import Misc from "@/client/Misc";
     import CourseManagement from "@/components/table/CourseManagement";
+    import ClassroomManagement from "@/components/table/ClassroomManagement";
     export default {
         name: "Control",
-        components: {CourseManagement, BarChart},
+        components: {ClassroomManagement, CourseManagement, BarChart},
         data:()=>({
             subjects:[]
         }),

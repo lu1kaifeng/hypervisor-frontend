@@ -8,4 +8,15 @@ export default class ClassroomApiClient {
             }
         })
     }
+
+    static addClassroom(token,identifier){
+        return Axios.post('/classroom',null,{
+            headers:{
+                "x-api-key":token
+            },
+            params:{
+                "identifier":identifier
+            }
+        })
+    }
 }
