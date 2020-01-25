@@ -19,7 +19,6 @@
                     :headers="header"
                     :items="classrooms"
                     :search="search"
-                    v-model="selected"
             />
             <v-card-actions class="actionsDetails" style="background: rgb(249, 249, 249); border-top-left-radius: 0; border-top-right-radius: 0">
                 <v-spacer/>

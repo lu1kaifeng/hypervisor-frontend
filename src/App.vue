@@ -1,10 +1,10 @@
 <template>
   <v-app>
-      <v-row no-gutters v-if="loggedIn">
-      <v-col cols="2">
-          <NavBar @pageChanged="currentPage = $event"/>
+      <v-row v-if="loggedIn">
+      <v-col :cols="barCols">
+          <NavBar @pageChanged="currentPage = $event" @expanded="barCols=2" @retracted="barCols=1"/>
       </v-col>
-        <v-col cols="10">
+        <v-col :cols="12 - barCols">
             <component :is='currentPage'/>
         </v-col>
       </v-row>
@@ -33,7 +33,8 @@ export default {
   data: () => ({
         a:false,
         wrongUserNamePassword: false,
-        currentPage:null
+        currentPage:null,
+        barCols:1,
   }),
     computed:{
         loggedIn:function () {

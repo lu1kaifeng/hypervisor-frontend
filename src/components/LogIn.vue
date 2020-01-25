@@ -1,8 +1,8 @@
 <template>
     <v-row no-gutters align="center" justify="center" style="height: 100%">
-        <v-col cols="2">
+        <v-col cols="2" md="1">
         </v-col>
-        <v-col cols="8">
+        <v-col cols="8" md="10">
             <v-content>
                 <v-container
                         fluid
@@ -28,9 +28,11 @@
 
                                 </v-toolbar>
                                 <v-card-text>
+                                    <transition name="fade" mode="out-in">
                                     <v-alert type="error" v-if="wrongUserNamePassword">
                                         用户名或密码错误
                                     </v-alert>
+                                    </transition>
                                     <v-form>
                                         <v-text-field
                                                 label="用户名"
@@ -54,6 +56,7 @@
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
+                                    <v-btn color="primary" outlined v-on:click="Register">注册</v-btn>
                                     <v-btn color="primary" v-on:click="Login">登录</v-btn>
                                 </v-card-actions>
                             </v-card>
@@ -62,7 +65,7 @@
                 </v-container>
             </v-content>
         </v-col>
-            <v-col cols="2">
+            <v-col cols="2" md="1">
             </v-col>
     </v-row>
 </template>
@@ -80,6 +83,9 @@
       methods:{
         Login:function () {
             this.$emit('logIn',this.userName,this.password)
+        },
+        Register:function () {
+
         }
       }
   }

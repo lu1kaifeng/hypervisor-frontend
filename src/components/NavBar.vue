@@ -111,6 +111,16 @@
                 this.$cookies.remove("apiKey");
                 window.location.reload();
             }
+        },
+        watch:{
+            mini:function () {
+                if(this.mini === false){
+                    this.$emit("expanded")
+                }else{
+
+                    this.$emit("retracted")
+                }
+            }
         }
     }
 </script>
