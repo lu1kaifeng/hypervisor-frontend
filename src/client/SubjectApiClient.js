@@ -24,4 +24,10 @@ export default  class SubjectApiClient {
             }
         })
     }
+
+    static registerSubject(){
+        return Axios.get('/subject/all',{
+
+        })
+    }
 }

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <v-row v-if="loggedIn">
+      <v-row no-gutters v-if="loggedIn">
       <v-col :cols="barCols">
           <NavBar @pageChanged="currentPage = $event" @expanded="barCols=2" @retracted="barCols=1"/>
       </v-col>
@@ -8,7 +8,7 @@
             <component :is='currentPage'/>
         </v-col>
       </v-row>
-      <v-row v-else>
+      <v-row no-gutters v-else>
           <v-col cols="12">
               <LogIn @logIn="onLogin" :wrong-user-name-password="wrongUserNamePassword"/>
           </v-col>
