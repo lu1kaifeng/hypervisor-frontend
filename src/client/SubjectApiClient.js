@@ -25,9 +25,14 @@ export default  class SubjectApiClient {
         })
     }
 
-    static registerSubject(){
-        return Axios.get('/subject/all',{
-
+    static registerSubject(name,password,role,photoBase64){
+        return Axios.post('/subject',photoBase64,{
+            headers: { 'Content-Type': 'text/plain' },
+            params:{
+                "name":name,
+                "password":password,
+                "role":role,
+            }
         })
     }
 }

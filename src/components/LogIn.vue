@@ -47,7 +47,7 @@
                                         <v-text-field
                                                 id="password"
                                                 label="密码"
-                                                name="this.password"
+                                                name="password"
                                                 prepend-icon="lock"
                                                 value=""
                                                 v-model="password"
@@ -98,7 +98,7 @@
 
                                         <v-text-field
                                                 label="填写用户名"
-                                                name="login"
+                                                name="loginReg"
                                                 prepend-icon="person"
                                                 value=""
                                                 v-model="userName"
@@ -106,9 +106,18 @@
                                         ></v-text-field>
 
                                         <v-text-field
+                                                label="填写角色"
+                                                name="roleReg"
+                                                prepend-icon="person"
+                                                value=""
+                                                v-model="role"
+                                                type="text"
+                                        ></v-text-field>
+
+                                        <v-text-field
                                                 id="password"
                                                 label="填写密码"
-                                                name="this.password"
+                                                name="passwordReg"
                                                 prepend-icon="lock"
                                                 value=""
                                                 v-model="password"
@@ -132,6 +141,8 @@
 </template>
 
 <script>
+  import SubjectApiClient from "@/client/SubjectApiClient";
+
   export default {
     name:"LogIn",
       props:{
@@ -140,6 +151,7 @@
       data:()=>({
         userName:"",
           password:"",
+          role:"",
           register:false,
           avatarBase64:""
       }),
@@ -148,6 +160,12 @@
             this.$emit('logIn',this.userName,this.password)
         },
           Register:function () {
+              // eslint-disable-next-line no-unused-vars
+                SubjectApiClient.registerSubject(this.userName,this.password,this.role,this.avatarBase64).then(function (response) {
+                    window.location.reload();
+                }).catch(function (error) {
+                    alert(error)
+                });
 
           },
           avatarToBase64:function (files) {
