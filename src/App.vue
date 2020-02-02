@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :style="{'background-image':`url(${backgroundUrl})`}">
       <v-row no-gutters v-if="loggedIn">
       <v-col :cols="barCols">
           <NavBar @pageChanged="currentPage = $event" @expanded="barCols=2" @retracted="barCols=1"/>
@@ -21,6 +21,7 @@ import LogIn from './components/LogIn';
 import NavBar from "@/components/NavBar";
 import Dash from "@/components/Dash";
 import axios from 'axios';
+import backgroundUrl from "@/assets/background.jpg"
 
 export default {
   name: 'App',
@@ -35,6 +36,7 @@ export default {
         wrongUserNamePassword: false,
         currentPage:null,
         barCols:1,
+        backgroundUrl
   }),
     computed:{
         loggedIn:function () {
