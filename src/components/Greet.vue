@@ -12,6 +12,8 @@
                         align-self="start"
                         class="space-around"
                         cols="2"
+                        lg="1"
+                        xl="1"
                 >
                     <v-avatar
                             class="profile"
@@ -23,7 +25,7 @@
                     </v-avatar>
 
                 </v-col>
-                <v-col align-self="start" cols="10">
+                <v-col align-self="start" cols="10" lg="11" xl="11">
                     <v-list-item
                             color="rgba(0, 0, 0, .4)"
                     >
@@ -43,7 +45,7 @@
                                 :value="engagementVal*100"
                                 color="blue"
                         >
-                            <strong>{{'课堂参与度:'+engagementVal*100 + '%'}}</strong>
+                            <strong style="color: white">{{'课堂参与度:'+engagementVal*100 + '%'}}</strong>
                         </v-progress-linear>
                     </v-col>
             </v-row>

@@ -1,5 +1,5 @@
 <template>
-  <v-app :style="{'background-image':`url(${backgroundUrl})`}">
+  <v-app id="app" :style="{'background-image':`url(${backgroundUrl})`,backgroundPosition:'right'}">
       <v-row no-gutters v-if="loggedIn">
       <v-col :cols="barCols">
           <NavBar @pageChanged="currentPage = $event" @expanded="barCols=2" @retracted="barCols=1"/>
@@ -68,5 +68,8 @@ export default {
 </script>
 
 <style scoped>
-
+    @import "fonts/fonts.css";
+    #app{
+        font-family: PingFang;
+    }
 </style>
