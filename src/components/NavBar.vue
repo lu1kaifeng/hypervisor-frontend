@@ -77,6 +77,7 @@
     import SubjectApiClient from "@/client/SubjectApiClient";
     import CourseSelection from "@/components/CourseSelection";
     import Control from "@/components/Control";
+    import Test from "@/components/Test";
 
     export default {
         name:"NavBar",
@@ -89,6 +90,7 @@
                 ],
                 teacherItems:[
                     { title: '控制台', icon: 'mdi-tune',component:Control },
+                    {title: '测试', icon: 'mdi-tune',component: Test}
                 ],
                 mini: true,
                 avatar:"",

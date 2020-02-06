@@ -35,4 +35,19 @@ export default  class SubjectApiClient {
             }
         })
     }
+
+    static identifySubject(photoBase64){
+        return Axios.post('/subject/identify',photoBase64,{
+            headers: { 'Content-Type': 'text/plain' }
+        })
+    }
+
+    static getToken(userName,password){
+        return Axios.get('/subject/logIn',{
+            params:{
+                name:userName,
+                password:password
+            }
+        })
+    }
 }
