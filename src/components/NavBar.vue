@@ -77,7 +77,8 @@
     import SubjectApiClient from "@/client/SubjectApiClient";
     import CourseSelection from "@/components/CourseSelection";
     import Control from "@/components/Control";
-    import Test from "@/components/Test";
+    import Test from "@/components/FaceNetTest";
+    import EngagementTest from "@/components/EngagementTest";
 
     export default {
         name:"NavBar",
@@ -90,7 +91,8 @@
                 ],
                 teacherItems:[
                     { title: '控制台', icon: 'mdi-tune',component:Control },
-                    {title: '测试', icon: 'mdi-tune',component: Test}
+                    {title: '面部识别测试', icon: 'mdi-tune',component: Test},
+                    {title: '专注度测试', icon: 'mdi-tune',component: EngagementTest}
                 ],
                 mini: true,
                 avatar:"",
