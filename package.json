@@ -17,7 +17,8 @@
     "vue-apexcharts": "^1.5.2",
     "vue-cli": "^2.9.6",
     "vue-cookies": "^1.6.1",
-    "vuetify": "^2.2.5"
+    "vuetify": "^2.2.19",
+    "webcamjs": "^1.0.26"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

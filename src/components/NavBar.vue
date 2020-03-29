@@ -79,6 +79,7 @@
     import Control from "@/components/Control";
     import Test from "@/components/FaceNetTest";
     import EngagementTest from "@/components/EngagementTest";
+    import CameraTest from "./CameraTest/CameraTest";
 
     export default {
         name:"NavBar",
@@ -92,7 +93,8 @@
                 teacherItems:[
                     { title: '控制台', icon: 'mdi-tune',component:Control },
                     {title: '面部识别测试', icon: 'mdi-tune',component: Test},
-                    {title: '专注度测试', icon: 'mdi-tune',component: EngagementTest}
+                    {title: '专注度测试', icon: 'mdi-tune',component: EngagementTest},
+                    {title: '实时测试',icon:'mdi-tune',component: CameraTest}
                 ],
                 mini: true,
                 avatar:"",
