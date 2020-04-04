@@ -57,6 +57,7 @@
                             model.name = subject.name;
                             // eslint-disable-next-line no-unused-vars
                         }).catch(function (error) {
+
                         })
                     }
             }).catch(

@@ -75,7 +75,7 @@
             successSnackbar:false,
             successText:"选择成功",
             failureSnackbar:false,
-            failureText:"重复选择，选择失败"
+            failureText:"选择失败"
         }),
         mounted:function () {
             let model = this;
@@ -100,7 +100,11 @@
                         CourseApiClient.attendCourse(model.$cookies.get("apiKey"),model.selected[0].id)
                         model.successSnackbar = true
                     }
-                )
+                    // eslint-disable-next-line no-unused-vars
+                ).catch(function (error) {
+                    CourseApiClient.attendCourse(model.$cookies.get("apiKey"),model.selected[0].id)
+                    model.successSnackbar = true
+                })
             }
         }
     }

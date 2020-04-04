@@ -42,4 +42,20 @@ export default class CourseApiClient{
             }
         })
     }
+
+    static addVideo(token,courseId,title){
+        return Axios.post('/course/'+courseId+'/video/'+title,null,{
+            headers:{
+                "x-api-key":token
+            }
+        })
+    }
+
+    static delVideo(token,courseId,title){
+        return Axios.delete('/course/'+courseId+'/video/'+title,{
+            headers:{
+                "x-api-key":token
+            }
+        })
+    }
 }

@@ -80,6 +80,8 @@
     import Test from "@/components/FaceNetTest";
     import EngagementTest from "@/components/EngagementTest";
     import CameraTest from "./CameraTest/CameraTest";
+    import MoocVideoPage from "./page/MoocVideoPage";
+    import CourseVideoUploadPage from "./page/CourseVideoUploadPage";
 
     export default {
         name:"NavBar",
@@ -89,6 +91,8 @@
                 studentItems: [
                     { title: '仪表板', icon: 'mdi-view-dashboard',component:Dash },
                     { title: '加入课程', icon: 'mdi-select-all',component:CourseSelection },
+                    {title: 'MOOC',icon:'mdi-tune',component: MoocVideoPage},
+                    {title: '视频',icon:'mdi-tune',component: CourseVideoUploadPage}
                 ],
                 teacherItems:[
                     { title: '控制台', icon: 'mdi-tune',component:Control },
